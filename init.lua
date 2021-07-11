@@ -1,9 +1,6 @@
 -- Map leader to space
 vim.g.mapleader = ','
 
-fn = vim.fn
-local execute = vim.api.nvim_command
-
 -- Sensible defaults
    require('settings')
 
@@ -28,7 +25,7 @@ require 'paq-nvim' {
   'glepnir/dashboard-nvim';
 
   -- Let Paq manage itself
-  'savq/paq-nvim';                  
+  'savq/paq-nvim';
 
   -- Color scheme
   'rakr/vim-one';
@@ -39,20 +36,13 @@ require 'paq-nvim' {
   -- Pictograms
   'onsails/lspkind-nvim';
 
-  -- Snippets
-  'cstrap/python-snippets';
-  'ylcnfrht/vscode-python-snippet-pack';
-  'xabikos/vscode-javascript';
-  'golang/vscode-go';
-  'rust-lang/vscode-rust';
-
   -- Fuzzy file finder
   'nvim-lua/plenary.nvim';
   'nvim-lua/popup.nvim';
   'nvim-telescope/telescope.nvim';
 
   -- File explorer
-  'preservim/nerdtree'; 
+  'preservim/nerdtree';
 
   -- Enclosing characters utility
   'tpope/vim-surround';
@@ -68,6 +58,8 @@ require 'paq-nvim' {
   'hrsh7th/nvim-compe';
   'glepnir/lspsaga.nvim';
 
+  -- Icons
+  'ryanoasis/vim-devicons';
 
   -- Lua development
   'folke/lua-dev.nvim';
@@ -78,6 +70,16 @@ require 'paq-nvim' {
 
   -- Fugitive for Git
   'tpope/vim-fugitive';
+
+  -- Status bar
+  'vim-airline/vim-airline';
+  'vim-airline/vim-airline-themes';
+
+  -- Error colors
+ 'folke/lsp-colors.nvim';
+
+ -- Lint integration
+ 'dense-analysis/ale';
 }
 
 require("trouble").setup {

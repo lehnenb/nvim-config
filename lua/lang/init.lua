@@ -90,7 +90,7 @@ capabilities.textDocument.codeAction = {
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 -- LSPs
-local servers = {"pyright", "rust_analyzer", "gopls", "tsserver", "vimls"}
+local servers = {"pyright", "rust_analyzer", "gopls", "tsserver", "vimls", "solargraph"}
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {capabilities = capabilities, on_attach = on_attach}
 end
@@ -163,10 +163,10 @@ vim.g.symbols_outline = {
 -- LSP Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false,
+        virtual_text = true,
         underline = true,
         signs = true,
-        update_in_insert = false
+        update_in_insert = true
     })
 
 -- Send diagnostics to quickfix list
