@@ -21,6 +21,9 @@ vim.g.mapleader = ','
   require('config.lspkind')
 
 require 'paq-nvim' {
+  -- Terminal
+ 'vimlab/split-term.vim'; 
+
   -- Dashboard for nvim
   'glepnir/dashboard-nvim';
 
