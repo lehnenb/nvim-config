@@ -21,72 +21,77 @@ vim.g.mapleader = ','
   require('config.lspkind')
 
 require 'paq-nvim' {
-  -- Terminal
- 'vimlab/split-term.vim'; 
+    -- Terminal
+    'vimlab/split-term.vim';
 
-  -- Dashboard for nvim
-  'glepnir/dashboard-nvim';
+    -- Dashboard for nvim
+    'glepnir/dashboard-nvim';
 
-  -- Let Paq manage itself
-  'savq/paq-nvim';
+    -- Let Paq manage itself
+    'savq/paq-nvim';
 
-  -- Color scheme
-  'rakr/vim-one';
+    -- Color scheme
+    'rakr/vim-one';
 
-  -- Code formatting
-  'sbdchd/neoformat';
+    -- Code formatting
+    'sbdchd/neoformat';
 
-  -- Pictograms
-  'onsails/lspkind-nvim';
+    -- Pictograms
+    'onsails/lspkind-nvim';
 
-  -- Fuzzy file finder
-  'nvim-lua/plenary.nvim';
-  'nvim-lua/popup.nvim';
-  'nvim-telescope/telescope.nvim';
+    -- Fuzzy file finder
+    'nvim-lua/plenary.nvim';
+    'nvim-lua/popup.nvim';
+    'nvim-telescope/telescope.nvim';
 
-  -- File explorer
-  'preservim/nerdtree';
+    -- File explorer
+    'preservim/nerdtree';
 
-  -- Enclosing characters utility
-  'tpope/vim-surround';
+    -- Enclosing characters utility
+    'tpope/vim-surround';
 
+    -- Diagnostics
+    'kyazdani42/nvim-web-devicons';
+    'folke/trouble.nvim';
 
-  -- Diagnostics
-  'kyazdani42/nvim-web-devicons';
-  'folke/trouble.nvim';
+    -- LSP and completion
+    'ray-x/lsp_signature.nvim';
+    'neovim/nvim-lspconfig';
+    'hrsh7th/nvim-compe';
+    'glepnir/lspsaga.nvim';
+    "jose-elias-alvarez/null-ls.nvim";
+    "jose-elias-alvarez/nvim-lsp-ts-utils";
 
-  -- LSP and completion
-  'ray-x/lsp_signature.nvim';
-  'neovim/nvim-lspconfig';
-  'hrsh7th/nvim-compe';
-  'glepnir/lspsaga.nvim';
+    -- Icons
+    'ryanoasis/vim-devicons';
 
-  -- Icons
-  'ryanoasis/vim-devicons';
+    -- Lua development
+    'folke/lua-dev.nvim';
+    'tjdevries/nlua.nvim';
 
-  -- Lua development
-  'folke/lua-dev.nvim';
-  'tjdevries/nlua.nvim';
+    -- Vim dispatch
+    'tpope/vim-dispatch';
 
-  -- Vim dispatch
-  'tpope/vim-dispatch';
+    -- Fugitive for Git
+    'tpope/vim-fugitive';
 
-  -- Fugitive for Git
-  'tpope/vim-fugitive';
+    -- Status bar
+    'vim-airline/vim-airline';
+    'vim-airline/vim-airline-themes';
 
-  -- Status bar
-  'vim-airline/vim-airline';
-  'vim-airline/vim-airline-themes';
+    -- Error colors
+    'folke/lsp-colors.nvim';
 
-  -- Error colors
- 'folke/lsp-colors.nvim';
+    -- Lint integration
+    'dense-analysis/ale';
 
- -- Lint integration
- 'dense-analysis/ale';
+    -- Vimwiki
+    'vimwiki/vimwiki'
+
 }
 
 require("trouble").setup {
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
-  }
+}

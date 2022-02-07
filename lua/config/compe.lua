@@ -81,5 +81,5 @@ end
 
 utils.map("i", "<C-j>", "v:lua.tab_complete()", {expr = true})
 utils.map("s", "<C-j>", "v:lua.tab_complete()", {expr = true})
-utils.map("i", "<C-n>", "v:lua.s_tab_complete()", {expr = true})
-utils.map("s", "<C-n>", "v:lua.s_tab_complete()", {expr = true})
+utils.map("i", "<C-k>", "v:lua.s_tab_complete()", {expr = true})
+utils.map("s", "<C-k>", "v:lua.s_tab_complete()", {expr = true})
