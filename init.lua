@@ -17,8 +17,9 @@ vim.g.mapleader = ','
 -- Loads config files
   require('config.colorscheme')
   require('config.fugitive')
-  require('config.compe')
+  require('config.cmp')
   require('config.lspkind')
+  require('config.vim-snip')
 
 require 'paq-nvim' {
     -- Terminal
@@ -56,11 +57,22 @@ require 'paq-nvim' {
 
     -- LSP and completion
     'ray-x/lsp_signature.nvim';
+    'golang/vscode-go';
+    'hrsh7th/nvim-cmp';
+    'hrsh7th/cmp-nvim-lsp';
+    'hrsh7th/cmp-buffer';
+    'hrsh7th/cmp-path';
+    'hrsh7th/cmp-cmdline';
     'neovim/nvim-lspconfig';
-    'hrsh7th/nvim-compe';
+    'hrsh7th/cmp-vsnip';
+    'hrsh7th/vim-vsnip';
+    'hrsh7th/vim-vsnip-integ';
     'glepnir/lspsaga.nvim';
-    "jose-elias-alvarez/null-ls.nvim";
-    "jose-elias-alvarez/nvim-lsp-ts-utils";
+    -- "jose-elias-alvarez/null-ls.nvim";
+    -- "jose-elias-alvarez/nvim-lsp-ts-utils";
+
+    -- Tmux navigation
+    "christoomey/vim-tmux-navigator";
 
     -- Icons
     'ryanoasis/vim-devicons';
