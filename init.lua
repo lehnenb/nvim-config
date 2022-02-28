@@ -7,12 +7,8 @@ vim.g.mapleader = ','
 -- Key mappings
    require('keymappings')
 
-
---- Lua LSP
-  require('lsp_lua')
-
 -- LSP
-  require('lang')
+  require('lsp')
 
 -- Loads config files
   require('config.colorscheme')

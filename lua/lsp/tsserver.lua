@@ -33,10 +33,10 @@ nvim_lsp.tsserver.setup {
             complete_parens = false,
             signature_help_in_parens = true,
 
-	    -- update imports on file move
-	    update_imports_on_move = false,
-	    require_confirmation_on_move = false,
-	    watch_dir = "/src",
+            -- update imports on file move
+            update_imports_on_move = false,
+            require_confirmation_on_move = false,
+            watch_dir = "/src",
         }
 
         -- required to enable ESLint code actions and formatting
