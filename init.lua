@@ -14,92 +14,92 @@ vim.g.mapleader = ','
   require('config.colorscheme')
   require('config.fugitive')
   require('config.cmp')
+  require('config.nvim-web-devicons')
+  require('config.feline')
+  require('config.nvim-tree')
   require('config.lspkind')
   require('config.vim-snip')
 
-require 'paq-nvim' {
-    -- Terminal
-    'vimlab/split-term.vim';
+-- Only required if you have packer configured as `opt`
+vim.cmd [[packadd packer.nvim]]
 
-    -- Dashboard for nvim
-    'glepnir/dashboard-nvim';
 
-    -- Let Paq manage itself
-    'savq/paq-nvim';
+require('packer').startup(function(use)
+  -- Terminal
+  use 'vimlab/split-term.vim'
 
-    -- Color scheme
-    'rakr/vim-one';
+  -- Dashboard for nvim
+  use 'glepnir/dashboard-nvim'
 
-    -- Code formatting
-    'sbdchd/neoformat';
+  -- Let Packer manage itself
+  use 'wbthomason/packer.nvim'
 
-    -- Pictograms
-    'onsails/lspkind-nvim';
+  -- Color scheme
+  use 'rakr/vim-one'
 
-    -- Fuzzy file finder
-    'nvim-lua/plenary.nvim';
-    'nvim-lua/popup.nvim';
-    'nvim-telescope/telescope.nvim';
+  -- Code formatting
+  use  'sbdchd/neoformat'
 
-    -- File explorer
-    'preservim/nerdtree';
+  -- Pictograms
+  use 'onsails/lspkind-nvim'
 
-    -- Enclosing characters utility
-    'tpope/vim-surround';
+  -- Fuzzy file finder
+  use 'nvim-lua/plenary.nvim'
+  use 'nvim-lua/popup.nvim'
+  use 'nvim-telescope/telescope.nvim'
 
-    -- Diagnostics
-    'kyazdani42/nvim-web-devicons';
-    'folke/trouble.nvim';
+  -- File explorer
+  use 'kyazdani42/nvim-tree.lua'
 
-    -- LSP and completion
-    'ray-x/lsp_signature.nvim';
-    'golang/vscode-go';
-    'hrsh7th/nvim-cmp';
-    'hrsh7th/cmp-nvim-lsp';
-    'hrsh7th/cmp-buffer';
-    'hrsh7th/cmp-path';
-    'hrsh7th/cmp-cmdline';
-    'neovim/nvim-lspconfig';
-    'hrsh7th/cmp-vsnip';
-    'hrsh7th/vim-vsnip';
-    'hrsh7th/vim-vsnip-integ';
-    'glepnir/lspsaga.nvim';
-    -- "jose-elias-alvarez/null-ls.nvim";
-    -- "jose-elias-alvarez/nvim-lsp-ts-utils";
+  -- Enclosing characters utility
+  use 'tpope/vim-surround'
 
-    -- Tmux navigation
-    "christoomey/vim-tmux-navigator";
+  -- Diagnostics
+  use 'kyazdani42/nvim-web-devicons'
+  use 'folke/trouble.nvim'
 
-    -- Icons
-    'ryanoasis/vim-devicons';
+  -- LSP and completion
+  use 'ray-x/lsp_signature.nvim'
+  use 'golang/vscode-go'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/vim-vsnip-integ'
+  use 'glepnir/lspsaga.nvim'
+  -- "jose-elias-alvarez/null-ls.nvim";
+  -- "jose-elias-alvarez/nvim-lsp-ts-utils";
 
-    -- Lua development
-    'folke/lua-dev.nvim';
-    'tjdevries/nlua.nvim';
+  -- Tmux navigation
+  use "christoomey/vim-tmux-navigator";
 
-    -- Vim dispatch
-    'tpope/vim-dispatch';
+  -- Icons
+  use 'ryanoasis/vim-devicons'
 
-    -- Fugitive for Git
-    'tpope/vim-fugitive';
+  -- Lua development
+  use 'folke/lua-dev.nvim'
+  use 'tjdevries/nlua.nvim'
 
-    -- Status bar
-    'vim-airline/vim-airline';
-    'vim-airline/vim-airline-themes';
+  -- Vim dispatch
+  use 'tpope/vim-dispatch'
 
-    -- Error colors
-    'folke/lsp-colors.nvim';
+  -- Fugitive for Git
+  use 'tpope/vim-fugitive'
 
-    -- Lint integration
-    'dense-analysis/ale';
+  -- Status bar
+  use 'feline-nvim/feline.nvim'
 
-    -- Vimwiki
-    'vimwiki/vimwiki'
+  -- Error colors
+  use 'folke/lsp-colors.nvim'
 
-}
+  -- Lint integration
+  use 'dense-analysis/ale'
 
-require("trouble").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-}
+  -- Vimwiki
+  use 'vimwiki/vimwiki'
+
+end)
