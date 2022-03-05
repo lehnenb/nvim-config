@@ -20,6 +20,9 @@ vim.g.mapleader = ','
   require('config.lspkind')
   require('config.vim-snip')
 
+-- Custom plugins
+  require('custom_plugins.notes')
+
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
