@@ -84,6 +84,7 @@ require('packer').startup(function(use)
   use 'ryanoasis/vim-devicons'
 
   -- Lua development
+  use 'nvim-lua/plenary.nvim'
   use 'folke/lua-dev.nvim'
   use 'tjdevries/nlua.nvim'
 
@@ -101,8 +102,4 @@ require('packer').startup(function(use)
 
   -- Lint integration
   use 'dense-analysis/ale'
-
-  -- Vimwiki
-  use 'vimwiki/vimwiki'
-
 end)
