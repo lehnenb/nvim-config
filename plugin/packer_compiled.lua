@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ale = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/ale",
+    url = "https://github.com/dense-analysis/ale"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -99,6 +104,16 @@ _G.packer_plugins = {
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
     url = "https://github.com/glepnir/dashboard-nvim"
   },
+  ["feline.nvim"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/feline.nvim",
+    url = "https://github.com/feline-nvim/feline.nvim"
+  },
+  ["lsp-colors.nvim"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/lsp-colors.nvim",
+    url = "https://github.com/folke/lsp-colors.nvim"
+  },
   ["lsp_signature.nvim"] = {
     loaded = true,
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
@@ -114,10 +129,20 @@ _G.packer_plugins = {
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
     url = "https://github.com/glepnir/lspsaga.nvim"
   },
+  ["lua-dev.nvim"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/lua-dev.nvim",
+    url = "https://github.com/folke/lua-dev.nvim"
+  },
   neoformat = {
     loaded = true,
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/neoformat",
     url = "https://github.com/sbdchd/neoformat"
+  },
+  ["nlua.nvim"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/nlua.nvim",
+    url = "https://github.com/tjdevries/nlua.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -139,10 +164,10 @@ _G.packer_plugins = {
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
-  ["paq-nvim"] = {
+  ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/paq-nvim",
-    url = "https://github.com/savq/paq-nvim"
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -169,6 +194,21 @@ _G.packer_plugins = {
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
   },
+  ["vim-devicons"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/vim-devicons",
+    url = "https://github.com/ryanoasis/vim-devicons"
+  },
+  ["vim-dispatch"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/vim-dispatch",
+    url = "https://github.com/tpope/vim-dispatch"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
   ["vim-one"] = {
     loaded = true,
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/vim-one",
@@ -178,6 +218,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
   },
   ["vim-vsnip"] = {
     loaded = true,
