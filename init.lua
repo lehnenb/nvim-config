@@ -19,6 +19,9 @@ vim.g.mapleader = ','
   require('config.nvim-tree')
   require('config.lspkind')
   require('config.vim-snip')
+  require('config.trouble')
+  require('config.telescope')
+  require('config.null-ls')
 
 -- Custom plugins
   require('custom_plugins.notes')
@@ -47,7 +50,6 @@ require('packer').startup(function(use)
   use 'onsails/lspkind-nvim'
 
   -- Fuzzy file finder
-  use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/popup.nvim'
   use 'nvim-telescope/telescope.nvim'
 
@@ -74,7 +76,7 @@ require('packer').startup(function(use)
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
   use 'glepnir/lspsaga.nvim'
-  -- "jose-elias-alvarez/null-ls.nvim";
+  use "jose-elias-alvarez/null-ls.nvim"
   -- "jose-elias-alvarez/nvim-lsp-ts-utils";
 
   -- Tmux navigation
@@ -101,5 +103,5 @@ require('packer').startup(function(use)
   use 'folke/lsp-colors.nvim'
 
   -- Lint integration
-  use 'dense-analysis/ale'
+  use 'mfussenegger/nvim-lint'
 end)

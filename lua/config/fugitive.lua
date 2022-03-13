@@ -1,3 +1,3 @@
 local utils = require('utils')
-utils.map('n', '<Leader>s', '<cmd>Git<CR>')  -- Git status
+utils.map('n', '<Leader>fs', '<cmd>Git<CR>')  -- Git status
 

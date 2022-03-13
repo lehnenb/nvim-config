@@ -69,11 +69,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ale = {
-    loaded = true,
-    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/ale",
-    url = "https://github.com/dense-analysis/ale"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -144,10 +139,20 @@ _G.packer_plugins = {
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/nlua.nvim",
     url = "https://github.com/tjdevries/nlua.nvim"
   },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-lint"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/nvim-lint",
+    url = "https://github.com/mfussenegger/nvim-lint"
   },
   ["nvim-lspconfig"] = {
     loaded = true,

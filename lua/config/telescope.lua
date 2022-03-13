@@ -6,7 +6,33 @@ utils.map('n', '<C-b>', "<cmd>lua require('telescope.builtin.lsp_document_symbol
 
 local T = {}
 
-function T.edit_neovim()
+function T.grep_neovim()
+    require('telescope.builtin').live_grep {
+        shorten_path = false,
+        cwd = "~/.config/nvim",
+        prompt = " - Dotfiles  - ",
+        height = 10,
+        layout_stratey = 'horizontal',
+        layout_options = {
+            preview_width = 0.75,
+        },
+    }
+end
+
+function T.grep_projects()
+    require('telescope.builtin').live_grep {
+        shorten_path = false,
+        cwd = "~/Projects",
+        prompt = " - Projects - ",
+        height = 10,
+        layout_stratey = 'horizontal',
+        layout_options = {
+            preview_width = 0.75,
+        },
+    }
+end
+
+function T.open_neovim()
     require('telescope.builtin').git_files {
         shorten_path = false,
         cwd = "~/.config/nvim",
@@ -19,7 +45,28 @@ function T.edit_neovim()
     }
 end
 
+function T.open_projects()
+    require('telescope.builtin').find_files {
+        shorten_path = false,
+        cwd = "~/Projects",
+        prompt = " - Projects - ",
+        height = 10,
+        layout_stratey = 'horizontal',
+        layout_options = {
+            preview_width = 0.75,
+        },
+    }
+end
+
+
 -- mapping of custom functions
-utils.map('n', '<leader>n', "<cmd>lua require('config.telescope').edit_neovim()<cr>")
+utils.map('n', '<leader>ln', "<cmd>lua require('config.telescope').open_neovim()<cr>")
+utils.map('n', '<leader>lh', "<cmd>lua require('config.telescope').open_projects()<cr>")
+utils.map('n', '<leader>lo', "<cmd>Telescope oldfiles<cr>")
+
+utils.map('n', '<leader>sn', "<cmd>lua require('config.telescope').grep_neovim()<cr>")
+utils.map('n', '<leader>sh', "<cmd>lua require('config.telescope').grep_projects()<cr>")
+
+
 
 return T

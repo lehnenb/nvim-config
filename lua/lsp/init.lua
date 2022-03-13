@@ -90,10 +90,28 @@ capabilities.textDocument.codeAction = {
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 -- LSPs
-local servers = {"pyright", "rust_analyzer", "gopls", "tsserver", "vimls", "solargraph"}
-for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {capabilities = capabilities, on_attach = on_attach}
-end
+-- local servers = {"pyright", "tsserver", "vimls", "solargraph"}
+--for _, lsp in ipairs(servers) do
+--    nvim_lsp[lsp].setup {capabilities = capabilities, on_attach = on_attach}
+-- end
+
+  local util = require "lspconfig/util"
+
+  nvim_lsp.gopls.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    cmd = {"gopls", "serve"},
+    filetypes = {"go", "gomod"},
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+    settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true,
+        },
+        staticcheck = true,
+      },
+    },
+  }
 
 -- Lua LSP
 local sumneko_root_path = ""
