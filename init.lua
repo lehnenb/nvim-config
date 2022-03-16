@@ -22,6 +22,8 @@ vim.g.mapleader = ','
   require('config.trouble')
   require('config.telescope')
   require('config.null-ls')
+  require('config.treesitter')
+  require('config.nvim-autopairs')
 
 -- Custom plugins
   require('custom_plugins.notes')
@@ -84,6 +86,13 @@ require('packer').startup(function(use)
 
   -- Icons
   use 'ryanoasis/vim-devicons'
+
+  -- Syntax
+  use { 'windwp/nvim-autopairs' }
+  use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+  }
 
   -- Lua development
   use 'nvim-lua/plenary.nvim'

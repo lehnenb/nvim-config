@@ -62,11 +62,11 @@ end
 -- mapping of custom functions
 utils.map('n', '<leader>ln', "<cmd>lua require('config.telescope').open_neovim()<cr>")
 utils.map('n', '<leader>lh', "<cmd>lua require('config.telescope').open_projects()<cr>")
+utils.map('n', '<leader>gs', "<cmd>Telescope git_status<cr>")
 utils.map('n', '<leader>lo', "<cmd>Telescope oldfiles<cr>")
 
 utils.map('n', '<leader>sn', "<cmd>lua require('config.telescope').grep_neovim()<cr>")
 utils.map('n', '<leader>sh', "<cmd>lua require('config.telescope').grep_projects()<cr>")
-
 
 
 return T

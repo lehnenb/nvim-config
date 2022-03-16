@@ -20,6 +20,8 @@ mapping = {
     i = cmp.mapping.abort(),
     c = cmp.mapping.close(),
     }),
+    ['<C-j>'] = cmp.mapping.select_next_item(),
+    ['<C-k>'] = cmp.mapping.select_prev_item(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 },
 
