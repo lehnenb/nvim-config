@@ -1,6 +1,7 @@
 local N = {}
 local utils = require('utils')
 local themes = require('telescope.themes')
+local previewers = require('telescope.previewers')
 local a = require "plenary.async"
 
  function OLDwriteToFile(path, text)
@@ -27,9 +28,10 @@ end
 
 function N.ListNotes()
     local options = themes.get_dropdown {
+        prompt = " - Dotfiles  - ",
         winblend = 10,
         border = true,
-        previewer = false,
+        previewer = previewers.buffer_previewer,
         shorten_path = false,
         cwd = "~/notes"
     }
