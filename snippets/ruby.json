@@ -1,0 +1,35 @@
+{
+    "FST": {
+        "prefix": ["fst"],
+        "body": ["# frozen-string-literal: true"]
+    },
+    "Class": {
+        "prefix": ["class"],
+        "body": [
+            "# @author ${VIM:\\$USER}",
+            "# @$1: class description goes here",
+            "class $1 ${2:< ${3:Parent}}",
+            "  def initialize",
+            "  end",
+            "end"
+        ],
+        "description":  "Ruby class definition template"
+    },
+    "SKEY": {
+        "prefix": ["hashkey"],
+        "body": ["$1: $2,"]
+
+    },
+    "Pry": {
+        "prefix": ["pry"],
+        "body": ["require 'pry'; binding.pry"]
+    },
+    "HEREDOC": {
+        "prefix": "heredoc",
+        "body": [
+            "<<-$1",
+            "$2",
+            "$1"
+        ]
+    }
+}
