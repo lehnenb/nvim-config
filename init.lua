@@ -81,7 +81,7 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
-  use 'glepnir/lspsaga.nvim'
+  use 'tami5/lspsaga.nvim'
   -- use "jose-elias-alvarez/null-ls.nvim"
   -- "jose-elias-alvarez/nvim-lsp-ts-utils";
 
