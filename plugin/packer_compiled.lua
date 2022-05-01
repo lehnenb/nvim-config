@@ -139,11 +139,6 @@ _G.packer_plugins = {
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/nlua.nvim",
     url = "https://github.com/tjdevries/nlua.nvim"
   },
-  ["null-ls.nvim"] = {
-    loaded = true,
-    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
-  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -163,6 +158,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-luapad"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/nvim-luapad",
+    url = "https://github.com/rafcamlet/nvim-luapad"
   },
   ["nvim-tree.lua"] = {
     loaded = true,

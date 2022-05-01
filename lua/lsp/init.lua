@@ -62,7 +62,6 @@ local on_attach = function(client, bufnr)
         hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
         augroup lsp_document_highlight
         autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END
         ]], false)
@@ -90,10 +89,10 @@ capabilities.textDocument.codeAction = {
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 -- LSPs
--- local servers = {"pyright", "tsserver", "vimls", "solargraph"}
---for _, lsp in ipairs(servers) do
---    nvim_lsp[lsp].setup {capabilities = capabilities, on_attach = on_attach}
--- end
+local servers = {"tsserver", "solargraph"}
+for _, lsp in ipairs(servers) do
+   nvim_lsp[lsp].setup {capabilities = capabilities, on_attach = on_attach}
+end
 
   local util = require "lspconfig/util"
 
@@ -187,24 +186,4 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
         update_in_insert = true
     })
 
--- Send diagnostics to quickfix list
-do
-    local method = "textDocument/publishDiagnostics"
-    local default_handler = vim.lsp.handlers[method]
-    vim.lsp.handlers[method] = function(err, method, result, client_id, bufnr,
-                                        config)
-        default_handler(err, method, result, client_id, bufnr, config)
-        local diagnostics = vim.lsp.diagnostic.get_all()
-        local qflist = {}
-        for bufnr, diagnostic in pairs(diagnostics) do
-            for _, d in ipairs(diagnostic) do
-                d.bufnr = bufnr
-                d.lnum = d.range.start.line + 1
-                d.col = d.range.start.character + 1
-                d.text = d.message
-                table.insert(qflist, d)
-            end
-        end
-        vim.diagnostic.setqflist(qflist)
-    end
-end
+

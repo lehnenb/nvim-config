@@ -21,12 +21,16 @@ vim.g.mapleader = ','
   require('config.vim-snip')
   require('config.trouble')
   require('config.telescope')
-  require('config.null-ls')
   require('config.treesitter')
   require('config.nvim-autopairs')
 
 -- Custom plugins
   require('custom_plugins.notes')
+  -- Playground
+  vim.opt.runtimepath:append("~/Projects/nvim-go-playground")
+  local utils = require('utils')
+  utils.map('n', '<leader>pl', '<cmd>lua require("nvim-go-playground.playground").init()<CR>')
+
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
@@ -78,7 +82,7 @@ require('packer').startup(function(use)
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
   use 'glepnir/lspsaga.nvim'
-  use "jose-elias-alvarez/null-ls.nvim"
+  -- use "jose-elias-alvarez/null-ls.nvim"
   -- "jose-elias-alvarez/nvim-lsp-ts-utils";
 
   -- Tmux navigation
@@ -90,14 +94,15 @@ require('packer').startup(function(use)
   -- Syntax
   use { 'windwp/nvim-autopairs' }
   use {
-      'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate',
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
   }
 
   -- Lua development
   use 'nvim-lua/plenary.nvim'
   use 'folke/lua-dev.nvim'
   use 'tjdevries/nlua.nvim'
+  use 'rafcamlet/nvim-luapad'
 
   -- Vim dispatch
   use 'tpope/vim-dispatch'

@@ -5,12 +5,14 @@ utils.map('n', '<C-b>', "<cmd>lua require('telescope.builtin.lsp_document_symbol
 
 
 local T = {}
+local file_ignore = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.zip", "node_modules/", "dist/"}
 
 function T.grep_neovim()
     require('telescope.builtin').live_grep {
         shorten_path = false,
         cwd = "~/.config/nvim",
         prompt = " - Dotfiles  - ",
+        file_ignore_patterns = file_ignore,
         height = 10,
         layout_stratey = 'horizontal',
         layout_options = {
@@ -25,6 +27,7 @@ function T.grep_projects()
         cwd = "~/Projects",
         prompt = " - Projects - ",
         height = 10,
+        file_ignore_patterns = file_ignore,
         layout_stratey = 'horizontal',
         layout_options = {
             preview_width = 0.75,
@@ -38,6 +41,7 @@ function T.open_neovim()
         cwd = "~/.config/nvim",
         prompt = " - Dotfiles  - ",
         height = 10,
+        file_ignore_patterns = file_ignore,
         layout_stratey = 'horizontal',
         layout_options = {
             preview_width = 0.75,
@@ -51,6 +55,7 @@ function T.open_projects()
         cwd = "~/Projects",
         prompt = " - Projects - ",
         height = 10,
+        file_ignore_patterns = file_ignore,
         layout_stratey = 'horizontal',
         layout_options = {
             preview_width = 0.75,
