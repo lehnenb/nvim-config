@@ -33,15 +33,12 @@ vim.g.mapleader = ','
 
 
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+ vim.cmd [[packadd packer.nvim]]
 
 
 require('packer').startup(function(use)
   -- Terminal
   use 'vimlab/split-term.vim'
-
-  -- Dashboard for nvim
-  use 'glepnir/dashboard-nvim'
 
   -- Let Packer manage itself
   use 'wbthomason/packer.nvim'
