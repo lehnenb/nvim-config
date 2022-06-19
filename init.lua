@@ -24,8 +24,12 @@ vim.g.mapleader = ','
   require('config.treesitter')
   require('config.nvim-autopairs')
 
+-- Indent
+  require('config.indent-blankline')
+
 -- Custom plugins
   require('custom_plugins.notes')
+
   -- Playground
   vim.opt.runtimepath:append("~/Projects/nvim-go-playground")
   local utils = require('utils')
@@ -48,6 +52,9 @@ require('packer').startup(function(use)
 
   -- Code formatting
   use  'sbdchd/neoformat'
+
+  -- Indentation
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- Pictograms
   use 'onsails/lspkind-nvim'
