@@ -23,6 +23,9 @@ vim.g.mapleader = ','
   require('config.telescope')
   require('config.treesitter')
   require('config.nvim-autopairs')
+  require('config.yaml')
+  require('config.dap')
+  require('config.neodev')
 
 -- Indent
   require('config.indent-blankline')
@@ -31,14 +34,13 @@ vim.g.mapleader = ','
   require('custom_plugins.notes')
 
   -- Playground
-  vim.opt.runtimepath:append("~/Projects/nvim-go-playground")
+  vim.opt.runtimepath:append("~/Projects/playground-project/nvim-ruby-playground")
   local utils = require('utils')
-  utils.map('n', '<leader>pl', '<cmd>lua require("nvim-go-playground.playground").init()<CR>')
+  utils.map('n', '<leader>pl', '<cmd>lua require("nvim-ruby-playground.playground").init()<CR>')
 
 
 -- Only required if you have packer configured as `opt`
  vim.cmd [[packadd packer.nvim]]
-
 
 require('packer').startup(function(use)
   -- Terminal
@@ -86,7 +88,7 @@ require('packer').startup(function(use)
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
   use 'tami5/lspsaga.nvim'
-  -- use "jose-elias-alvarez/null-ls.nvim"
+  use "jose-elias-alvarez/null-ls.nvim"
   -- "jose-elias-alvarez/nvim-lsp-ts-utils";
 
   -- Tmux navigation
@@ -104,9 +106,16 @@ require('packer').startup(function(use)
 
   -- Lua development
   use 'nvim-lua/plenary.nvim'
-  use 'folke/lua-dev.nvim'
-  use 'tjdevries/nlua.nvim'
+  use 'folke/neodev.nvim'
   use 'rafcamlet/nvim-luapad'
+  use 'nvim-lua/completion-nvim'
+  use 'euclidianAce/BetterLua.vim'
+  use 'jbyuki/one-small-step-for-vimkind'
+
+  -- Debugger
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use 'leoluz/nvim-dap-go'
+
 
   -- Vim dispatch
   use 'tpope/vim-dispatch'
@@ -122,4 +131,20 @@ require('packer').startup(function(use)
 
   -- Lint integration
   use 'mfussenegger/nvim-lint'
+
+  -- yaml
+  use {
+    "cuducos/yaml.nvim",
+--    ft = {"yaml"}, -- optional
+    requires = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim" -- optional
+    },
+  }
+
+  -- Chat GPT
+  use({
+  'terror/chatgpt.nvim',
+    run = 'pip3 install -r requirements.txt'
+  })
 end)

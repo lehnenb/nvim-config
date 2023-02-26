@@ -35,6 +35,7 @@ local indentation = {
   javascriptreact = 2,
   typescriptreact = 2,
   ruby=2,
+  java=4,
   go = 4
 }
 
