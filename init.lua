@@ -50,7 +50,8 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Color scheme
-  use 'rakr/vim-one'
+  -- use 'rakr/vim-one'
+  use { "ellisonleao/gruvbox.nvim" }
 
   -- Code formatting
   use  'sbdchd/neoformat'
