@@ -7,7 +7,8 @@ vim.g.mapleader = ','
 -- Key mappings
    require('keymappings')
 
--- LSP
+-- Mason and lsp
+  require('config.mason')
   require('lsp')
 
 -- Loads config files
@@ -43,6 +44,13 @@ vim.g.mapleader = ','
  vim.cmd [[packadd packer.nvim]]
 
 require('packer').startup(function(use)
+  -- Mason (tool manager)
+  use {
+      "williamboman/mason.nvim",
+      run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+  }
+  use 'williamboman/mason-lspconfig.nvim'
+
   -- Terminal
   use 'vimlab/split-term.vim'
 
@@ -88,7 +96,6 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
-  use 'tami5/lspsaga.nvim'
   use "jose-elias-alvarez/null-ls.nvim"
   -- "jose-elias-alvarez/nvim-lsp-ts-utils";
 
@@ -116,7 +123,6 @@ require('packer').startup(function(use)
   -- Debugger
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   use 'leoluz/nvim-dap-go'
-
 
   -- Vim dispatch
   use 'tpope/vim-dispatch'

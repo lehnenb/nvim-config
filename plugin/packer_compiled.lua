@@ -120,6 +120,11 @@ _G.packer_plugins = {
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/feline.nvim",
     url = "https://github.com/feline-nvim/feline.nvim"
   },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
@@ -139,11 +144,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
-  },
-  ["lspsaga.nvim"] = {
-    loaded = true,
-    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
-    url = "https://github.com/tami5/lspsaga.nvim"
   },
   ["neodev.nvim"] = {
     loaded = true,
@@ -269,11 +269,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-one"] = {
-    loaded = true,
-    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/vim-one",
-    url = "https://github.com/rakr/vim-one"
   },
   ["vim-surround"] = {
     loaded = true,
