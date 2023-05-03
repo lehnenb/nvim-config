@@ -66,72 +66,63 @@ local capabilities = require('cmp_nvim_lsp')
 
 
 -- Code actions
-capabilities.textDocument.codeAction = {
-    dynamicRegistration = true,
-    codeActionLiteralSupport = {
-        codeActionKind = {
-            valueSet = (function()
-                local res = vim.tbl_values(vim.lsp.protocol.CodeActionKind)
-                table.sort(res)
-                return res
-            end)()
-        }
-    }
-}
+-- capabilities.textDocument.codeAction = {
+--     dynamicRegistration = true,
+--     codeActionLiteralSupport = {
+--         codeActionKind = {
+--             valueSet = (function()
+--                 local res = vim.tbl_values(vim.lsp.protocol.CodeActionKind)
+--                 table.sort(res)
+--                 return res
+--             end)()
+--         }
+--     }
+-- }
 
-capabilities.textDocument.completion.completionItem.snippetSupport = true;
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
--- LSPs
-local servers = {"tsserver", "solargraph", "lua_ls"}
+-- Vanilla LSPs
+local servers = { "solargraph", "gopls", "lua_ls" }
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {capabilities = capabilities, on_attach = on_attach}
 end
 
+-- Custom Config LSPs
+-- local custom_configs = {
+--  require("lsp.tsserver"),
+--  require("lsp.lua_ls"),
+--  require("lsp.gopls")
+-- }
 
-  -- GO LSP
-local util = require "lspconfig/util"
-
-nvim_lsp.gopls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  cmd = {"gopls", "serve"},
-  filetypes = {"go", "gomod"},
-  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-  settings = {
-    gopls = {
-      analyses = {
-        unusedparams = true,
-      },
-      staticcheck = true,
-    },
-  },
-}
+-- for _, lsp in ipairs(custom_configs) do
+--   lsp.setup_lsp(capabilities, on_attach)
+-- end
 
 -- symbols-outline.nvim
-vim.g.symbols_outline = {
-    highlight_hovered_item = true,
-    show_guides = true,
-    auto_preview = false, -- experimental
-    position = 'right',
-    keymaps = {
-        close = "<Esc>",
-        goto_location = "<Cr>",
-        focus_location = "o",
-        hover_symbol = "<C-space>",
-        rename_symbol = "r",
-        code_actions = "a"
-    },
-    lsp_blacklist = {}
-}
-
--- LSP Enable diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = true,
-        underline = true,
-        signs = true,
-        update_in_insert = true
-    })
-
-
+-- vim.g.symbols_outline = {
+--     highlight_hovered_item = true,
+--     show_guides = true,
+--     auto_preview = false, -- experimental
+--     position = 'right',
+--     keymaps = {
+--         close = "<Esc>",
+--         goto_location = "<Cr>",
+--         focus_location = "o",
+--         hover_symbol = "<C-space>",
+--         rename_symbol = "r",
+--         code_actions = "a"
+--     },
+--     lsp_blacklist = {}
+-- }
+-- 
+-- -- LSP Enable diagnostics
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] =
+--     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+--         virtual_text = true,
+--         underline = true,
+--         signs = true,
+--         update_in_insert = true
+--     })
+-- 
+-- 

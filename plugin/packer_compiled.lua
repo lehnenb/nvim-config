@@ -145,6 +145,16 @@ _G.packer_plugins = {
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
   ["neodev.nvim"] = {
     loaded = true,
     path = "/Users/brunolehnen/.local/share/nvim/site/pack/packer/start/neodev.nvim",
