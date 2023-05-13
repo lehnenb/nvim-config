@@ -46,7 +46,13 @@ cmd [[
 ]]
 
 for lang, level in pairs(indentation)  do
-  vim.cmd(string.format('autocmd FileType %s setlocal expandtab shiftwidth=%d tabstop=%d', lang, level, level))
+  local indentCmd = string.format('autocmd FileType %s setlocal', lang)
+
+  if lang ~= 'go' then
+    indentCmd = indentCmd .. string.format(' expandtab shiftwidth=%d tabstop=%d', level, level)
+  end
+
+  vim.cmd(indentCmd)
 end
 
 -- Highlight on yank
