@@ -142,7 +142,12 @@ require('lazy').setup({
     end,
   },
   'hrsh7th/vim-vsnip-integ',
-  "jose-elias-alvarez/null-ls.nvim",
+  { 
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      require('config.null-ls')
+    end,
+  },
   -- "jose-elias-alvarez/nvim-lsp-ts-utils";
 
   -- Tmux navigation
