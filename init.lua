@@ -2,165 +2,222 @@
 vim.g.mapleader = ','
 
 -- Sensible defaults
-   require('settings')
+  require('settings')
 
 -- Key mappings
    require('keymappings')
 
--- Mason and lsp
-  require('config.mason')
-  require('lsp')
-
 -- Loads config files
-  require('config.colorscheme')
-  require('config.fugitive')
-  require('config.cmp')
-  require('config.nvim-web-devicons')
-  require('config.feline')
-  require('config.nvim-tree')
-  require('config.lspkind')
-  require('config.vim-snip')
-  require('config.trouble')
-  require('config.telescope')
-  require('config.treesitter')
-  require('config.nvim-autopairs')
-  require('config.yaml')
-  require('config.dap')
-  require('config.neodev')
 
 -- Indent
-  require('config.indent-blankline')
 
 -- Custom plugins
-  require('custom_plugins.notes')
+--  require('custom_plugins.notes')
 
-  -- Playground
-  vim.opt.runtimepath:append("~/Projects/playground-project/nvim-ruby-playground")
-  local utils = require('utils')
-  utils.map('n', '<leader>pl', '<cmd>lua require("nvim-ruby-playground.playground").init()<CR>')
+-- Playground
+--  vim.opt.runtimepath:append("~/Projects/playground-project/nvim-ruby-playground")
+--  local utils = require('utils')
+--  utils.map('n', '<leader>pl', '<cmd>lua require("nvim-ruby-playground.playground").init()<CR>')
 
 
 -- Only required if you have packer configured as `opt`
- vim.cmd [[packadd packer.nvim]]
+-- local pack_cmd = [[packadd packer.nvim]]
+--  vim.cmd(pack_cmd)
 
-require('packer').startup(function(use)
+
+-- Install lazy
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require('lazy').setup({
   -- Mason (tool manager)
-  use {
-      "williamboman/mason.nvim",
-      run = ":MasonUpdate" -- :MasonUpdate updates registry contents
-  }
-  use 'williamboman/mason-lspconfig.nvim'
+  {
+    "williamboman/mason.nvim",
+    config = function()
+       -- :MasonUpdate updates registry contents
+       require('config.mason')
+       vim.cmd("MasonUpdate")
+    end,
+  },
 
-  -- Terminal
-  use 'vimlab/split-term.vim'
-
-  -- Let Packer manage itself
-  use 'wbthomason/packer.nvim'
+  'williamboman/mason-lspconfig.nvim',
 
   -- Color scheme
-  -- use 'rakr/vim-one'
-  use { "ellisonleao/gruvbox.nvim" }
+  {
+    "ellisonleao/gruvbox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('config.colorscheme')
+    end,
+  },
 
   -- Code formatting
-  use  'sbdchd/neoformat'
+   'sbdchd/neoformat',
 
   -- Indentation
-  use "lukas-reineke/indent-blankline.nvim"
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require('config.indent-blankline')
+    end
+  },
 
   -- Pictograms
-  use 'onsails/lspkind-nvim'
+  {
+    'onsails/lspkind-nvim',
+     config = function()
+	require('lspkind').init()
+     end
+  },
 
   -- Fuzzy file finder
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-telescope/telescope.nvim'
+  'nvim-lua/popup.nvim',
+  { 
+    'nvim-telescope/telescope.nvim',
+    config = function()
+      require('config.telescope')
+    end,
+  },
 
   -- File explorer
-  use 'kyazdani42/nvim-tree.lua'
+  { 
+    'kyazdani42/nvim-tree.lua',
+    config = function()
+      require('config.nvim-tree')
+    end,
+  },
 
   -- Enclosing characters utility
-  use 'tpope/vim-surround'
+  'tpope/vim-surround',
 
   -- Diagnostics
-  use 'kyazdani42/nvim-web-devicons'
-  use 'folke/trouble.nvim'
+  { 
+    'kyazdani42/nvim-web-devicons',
+    config = function()
+      require('config.nvim-web-devicons')
+    end,
+  },
+  { 
+    'folke/trouble.nvim',
+    config = function()
+      require('config.trouble')
+    end
+  },
 
   -- LSP and completion
-  use 'ray-x/lsp_signature.nvim'
-  use 'golang/vscode-go'
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/vim-vsnip-integ'
-  use "jose-elias-alvarez/null-ls.nvim"
+  'ray-x/lsp_signature.nvim',
+  'golang/vscode-go',
+  { 
+    'hrsh7th/nvim-cmp',
+    config = function()
+      require('config.cmp')
+    end
+  },
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  { 
+    'neovim/nvim-lspconfig',
+    config = function()
+      require('lsp')
+    end,
+  },
+  'hrsh7th/cmp-vsnip',
+  { 
+    'hrsh7th/vim-vsnip',
+    config = function()
+      require('config.vim-snip')
+    end,
+  },
+  'hrsh7th/vim-vsnip-integ',
+  "jose-elias-alvarez/null-ls.nvim",
   -- "jose-elias-alvarez/nvim-lsp-ts-utils";
 
   -- Tmux navigation
-  use "christoomey/vim-tmux-navigator";
+  "christoomey/vim-tmux-navigator",
 
   -- Icons
-  use 'ryanoasis/vim-devicons'
+  'ryanoasis/vim-devicons',
 
   -- Syntax
-  use { 'windwp/nvim-autopairs' }
-  use {
+  { 
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup{}
+    end,
+  },
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-  }
+    config = function()
+      require('config.treesitter')
+      vim.cmd(':TSUpdate');
+    end,
+  },
 
   -- Lua development
-  use 'nvim-lua/plenary.nvim'
-  use 'folke/neodev.nvim'
-  use 'rafcamlet/nvim-luapad'
-  use 'nvim-lua/completion-nvim'
-  use 'euclidianAce/BetterLua.vim'
-  use 'jbyuki/one-small-step-for-vimkind'
+  'nvim-lua/plenary.nvim',
+  { 
+    'folke/neodev.nvim',
+    config = function()
+      require('config.neodev')
+    end,
+  },
+  'rafcamlet/nvim-luapad',
+  'nvim-lua/completion-nvim',
+  'euclidianAce/BetterLua.vim',
+  'jbyuki/one-small-step-for-vimkind',
 
   -- Debugger
-  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-  use 'leoluz/nvim-dap-go'
+  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"} },
+  {
+    'leoluz/nvim-dap-go',
+    config = function()
+      require('config.dap')
+    end
+  },
 
   -- Vim dispatch
-  use 'tpope/vim-dispatch'
+  'tpope/vim-dispatch',
 
   -- Fugitive for Git
-  use 'tpope/vim-fugitive'
+  {
+    'tpope/vim-fugitive',
+    config = function()
+      require('config.fugitive')
+    end,
+  },
 
   -- Status bar
-  use 'feline-nvim/feline.nvim'
-
+  {
+    'nvim-lualine/lualine.nvim',
+  },
   -- Error colors
-  use 'folke/lsp-colors.nvim'
+  'folke/lsp-colors.nvim',
 
   -- Lint integration
-  use 'mfussenegger/nvim-lint'
+  'mfussenegger/nvim-lint',
 
   -- yaml
-  use {
+  {
     "cuducos/yaml.nvim",
---    ft = {"yaml"}, -- optional
-    requires = {
+     config = function()
+       require('config.yaml')
+     end,
+     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-telescope/telescope.nvim" -- optional
     },
-  }
-
-  -- Chat GPT
-  use({
-    "jackMort/ChatGPT.nvim",
-      config = function()
-        require("chatgpt").setup({
-          -- optional configuration
-        })
-      end,
-      requires = {
-        "MunifTanjim/nui.nvim",
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope.nvim"
-      }
-  })
-end)
+  },
+})

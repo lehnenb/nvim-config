@@ -82,22 +82,22 @@ local capabilities = require('cmp_nvim_lsp')
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 -- Vanilla LSPs
-local servers = { "solargraph", "gopls", "lua_ls" }
+local servers = { "solargraph", "gopls" }
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {capabilities = capabilities, on_attach = on_attach}
 end
 
 -- Custom Config LSPs
--- local custom_configs = {
+ local custom_configs = {
 --  require("lsp.tsserver"),
---  require("lsp.lua_ls"),
+  require("lsp.lua_ls"),
 --  require("lsp.gopls")
--- }
+}
 
--- for _, lsp in ipairs(custom_configs) do
---   lsp.setup_lsp(capabilities, on_attach)
--- end
+for _, lsp in ipairs(custom_configs) do
+  lsp.setup_lsp(capabilities, on_attach)
+end
 
 -- symbols-outline.nvim
 -- vim.g.symbols_outline = {
