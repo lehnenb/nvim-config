@@ -40,6 +40,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+  -- Rhai support
+  'rhaiscript/vim-rhai',
+
   -- Mason (tool manager)
   {
     "williamboman/mason.nvim",
@@ -114,7 +117,6 @@ require('lazy').setup({
       require('config.trouble')
     end
   },
-
   -- LSP and completion
   'ray-x/lsp_signature.nvim',
   'golang/vscode-go',
@@ -225,4 +227,8 @@ require('lazy').setup({
       "nvim-telescope/telescope.nvim" -- optional
     },
   },
+
+  {
+    'sindrets/diffview.nvim'
+  }
 })
