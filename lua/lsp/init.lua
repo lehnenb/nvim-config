@@ -82,7 +82,7 @@ local capabilities = require('cmp_nvim_lsp')
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 -- Vanilla LSPs
-local servers = { "solargraph", "gopls" }
+local servers = { "solargraph", "gopls", "tsserver" }
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {capabilities = capabilities, on_attach = on_attach}
