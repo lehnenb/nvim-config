@@ -57,8 +57,10 @@ require('lazy').setup({
     config = function()
        -- :MasonUpdate updates registry contents
        require('config.mason')
-       vim.cmd("MasonUpdate")
     end,
+    build = function()
+       vim.cmd('MasonUpdate')
+    end
   },
 
   'williamboman/mason-lspconfig.nvim',
@@ -88,13 +90,13 @@ require('lazy').setup({
   {
     'onsails/lspkind-nvim',
      config = function()
-	require('lspkind').init()
+      require('lspkind').init()
      end
   },
 
   -- Fuzzy file finder
   'nvim-lua/popup.nvim',
-  { 
+  {
     'nvim-telescope/telescope.nvim',
     config = function()
       require('config.telescope')
@@ -102,7 +104,7 @@ require('lazy').setup({
   },
 
   -- File explorer
-  { 
+  {
     'kyazdani42/nvim-tree.lua',
     config = function()
       require('config.nvim-tree')
@@ -113,13 +115,13 @@ require('lazy').setup({
   'tpope/vim-surround',
 
   -- Diagnostics
-  { 
+  {
     'kyazdani42/nvim-web-devicons',
     config = function()
       require('config.nvim-web-devicons')
     end,
   },
-  { 
+  {
     'folke/trouble.nvim',
     config = function()
       require('config.trouble')
@@ -128,7 +130,7 @@ require('lazy').setup({
   -- LSP and completion
   'ray-x/lsp_signature.nvim',
   'golang/vscode-go',
-  { 
+  {
     'hrsh7th/nvim-cmp',
     config = function()
       require('config.cmp')
@@ -138,21 +140,21 @@ require('lazy').setup({
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
-  { 
+  {
     'neovim/nvim-lspconfig',
     config = function()
       require('lsp')
     end,
   },
   'hrsh7th/cmp-vsnip',
-  { 
+  {
     'hrsh7th/vim-vsnip',
     config = function()
       require('config.vim-snip')
     end,
   },
   'hrsh7th/vim-vsnip-integ',
-  { 
+  {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
       require('config.null-ls')
@@ -167,7 +169,7 @@ require('lazy').setup({
   'ryanoasis/vim-devicons',
 
   -- Syntax
-  { 
+  {
     'windwp/nvim-autopairs',
     config = function()
       require('nvim-autopairs').setup{}
@@ -177,8 +179,10 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require('config.treesitter')
-      vim.cmd(':TSUpdate');
     end,
+    build = function()
+      vim.cmd(':TSUpdate');
+    end
   },
 
   -- Lua development
