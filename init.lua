@@ -7,6 +7,9 @@ vim.g.mapleader = ','
 -- Key mappings
    require('keymappings')
 
+-- Copilot
+  require('config.copilot')
+
 -- Loads config files
 
 -- Indent
@@ -40,6 +43,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+	defaults = {
+		lazy = true,
+		version = nil, -- dont use version="*"
+	},
+
   -- Rhai support
   'rhaiscript/vim-rhai',
 
@@ -204,6 +212,11 @@ require('lazy').setup({
     config = function()
       require('config.fugitive')
     end,
+  },
+
+  -- Copilot
+  {
+    'github/copilot.vim'
   },
 
   -- Status bar
