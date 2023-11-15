@@ -1,0 +1,1 @@
+set guifont=DroidSansMono_Nerd_Font:h11

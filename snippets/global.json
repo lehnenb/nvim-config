@@ -1,0 +1,26 @@
+{
+    "UUID": {
+      "prefix": ["guuid"],
+      "body": ["${VIM:system('uuidgen')}"]
+    },
+    "DATE": {
+      "prefix": ["gdate"],
+      "body": ["${VIM:system('date')}"]
+    },
+    "TIME": {
+      "prefix": ["gutime"],
+      "body": ["${VIM:system('date +%s')}"]
+    },
+    "USER": {
+      "prefix": ["guser"],
+      "body": ["${VIM:\\$USER}"]
+    },
+    "DIR": {
+      "prefix": ["gdir"],
+      "body": ["${VIM:system('pwd')}"]
+    },
+    "HOME": {
+      "prefix": ["ghome"],
+      "body": ["${VIM:\\$HOME}"]
+    }
+}

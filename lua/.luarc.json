@@ -1,0 +1,14 @@
+{
+    "workspace.library": [
+        "/Users/bruno.lehnen/.config/nvim",
+        "/Users/bruno.lehnen/.local/share/nvim/lazy/lazy.nvim",
+        "/Users/bruno.lehnen/.local/share/nvim/lazy/cmp-nvim-lsp",
+        "/Users/bruno.lehnen/.local/share/nvim/lazy/nvim-lspconfig",
+        "/Users/bruno.lehnen/.local/share/nvim/lazy/gruvbox.nvim",
+        "/Users/bruno.lehnen/.local/share/bob/v0.9.0/nvim-macos/share/nvim/runtime",
+        "/Users/bruno.lehnen/.local/share/bob/v0.9.0/nvim-macos/lib/nvim",
+        "/Users/bruno.lehnen/.local/state/nvim/lazy/readme",
+        "/Users/bruno.lehnen/.local/share/nvim/lazy/cmp-nvim-lsp/after",
+        "${3rd}/luassert/library"
+    ]
+}
