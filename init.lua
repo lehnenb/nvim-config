@@ -47,6 +47,11 @@ require('lazy').setup({
 		lazy = true,
 		version = nil, -- dont use version="*"
 	},
+	  -- Tmux
+	 {
+	  'christoomey/vim-tmux-navigator',
+	  event = "BufReadPre",
+	 },
 
   -- Rhai support
   'rhaiscript/vim-rhai',
@@ -80,10 +85,7 @@ require('lazy').setup({
 
   -- Indentation
   {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require('config.indent-blankline')
-    end
+    "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}
   },
 
   -- Pictograms
@@ -162,9 +164,6 @@ require('lazy').setup({
     end,
   },
   -- "jose-elias-alvarez/nvim-lsp-ts-utils";
-
-  -- Tmux navigation
-  "christoomey/vim-tmux-navigator",
 
   -- Icons
   'ryanoasis/vim-devicons',
