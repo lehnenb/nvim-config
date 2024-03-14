@@ -13,6 +13,7 @@ function T.grep_neovim()
         shorten_path = false,
         cwd = "~/.config/nvim",
         prompt = " - Dotfiles  - ",
+        pickers = { hidden=true },
         file_ignore_patterns = file_ignore,
         height = 10,
         layout_stratey = 'horizontal',
@@ -28,6 +29,7 @@ function T.grep_projects()
         cwd = "~/Projects",
         prompt = " - Projects - ",
         height = 10,
+        pickers = { hidden=true },
         file_ignore_patterns = file_ignore,
         layout_stratey = 'horizontal',
         layout_options = {
@@ -42,6 +44,7 @@ function T.open_neovim()
         cwd = "~/.config/nvim",
         prompt = " - Dotfiles  - ",
         height = 10,
+        pickers = { hidden=true },
         file_ignore_patterns = file_ignore,
         layout_stratey = 'horizontal',
         layout_options = {
@@ -56,6 +59,7 @@ function T.open_projects()
         cwd = "~/Projects",
         prompt = " - Projects - ",
         height = 10,
+        pickers = { hidden=true },
         file_ignore_patterns = file_ignore,
         layout_stratey = 'horizontal',
         layout_options = {
@@ -70,15 +74,15 @@ utils.map_fn('n', '<leader>fh', function() _builtin.help_tags() end)
 
 
 utils.map_fn('n', '<C-p>', function()
-  _builtin.find_files({ hidden=true, file_ignore_patterns=file_ignore })
+  _builtin.find_files({ pickers = { hidden=true }, hidden=true, file_ignore_patterns=file_ignore })
 end)
 
 utils.map_fn('n', 'ff', function()
-  _builtin.live_grep({ hidden=true, file_ignore_patterns=file_ignore, shorten_path= false })
+  _builtin.live_grep({ pickers = { hidden=true }, file_ignore_patterns=file_ignore, shorten_path= false })
 end)
 
 utils.map_fn('n', 'fc', function()
-  _builtin.grep_string({ hidden=true, file_ignore_patterns=file_ignore, shorten_path= false })
+  _builtin.grep_string({ pickers = { hidden=true }, file_ignore_patterns=file_ignore, shorten_path= false })
 end)
 
 
