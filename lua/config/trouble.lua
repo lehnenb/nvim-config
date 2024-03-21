@@ -24,6 +24,7 @@ vim.api.nvim_set_keymap("n", "tp", "<cmd>lua require('trouble').previous({skip_g
 
 
 require("trouble").setup {
+    auto_preview = true,
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below

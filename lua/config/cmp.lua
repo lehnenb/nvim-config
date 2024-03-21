@@ -4,6 +4,8 @@ local utils = require'utils'
 
 utils.opt('o', 'completeopt', 'menu,menuone,noselect')
 
+require'cmp'.setup {
+}
 cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
@@ -27,7 +29,8 @@ cmp.setup({
 
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'vsnip' }, -- For vsnip users.
+        -- { name = 'vsnip' }, -- For vsnip users.
+        { name = 'nvim_lua' }
         },
         {{ name = 'buffer' }}
     )
