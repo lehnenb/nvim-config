@@ -72,12 +72,13 @@ require('lazy').setup({
 
   -- Color scheme
   {
-    "ellisonleao/gruvbox.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
+    opts = {},
     config = function()
       require('config.colorscheme')
-    end,
+    end
   },
 
   -- Code formatting
@@ -198,15 +199,6 @@ require('lazy').setup({
   'euclidianAce/BetterLua.vim',
   'jbyuki/one-small-step-for-vimkind',
 
-  -- Debugger
-  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"} },
-  {
-    'leoluz/nvim-dap-go',
-    config = function()
-      require('config.dap')
-    end
-  },
-
   -- Vim dispatch
   'tpope/vim-dispatch',
 
@@ -226,6 +218,10 @@ require('lazy').setup({
   -- Status bar
   {
     'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('config.lualine')
+    end,
   },
   -- Error colors
   'folke/lsp-colors.nvim',
