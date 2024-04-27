@@ -5,25 +5,7 @@ vim.g.mapleader = ','
   require('settings')
 
 -- Key mappings
-   require('keymappings')
-
--- Loads config files
-
--- Indent
-
--- Custom plugins
---  require('custom_plugins.notes')
-
--- Playground
---  vim.opt.runtimepath:append("~/Projects/playground-project/nvim-ruby-playground")
---  local utils = require('utils')
---  utils.map('n', '<leader>pl', '<cmd>lua require("nvim-ruby-playground.playground").init()<CR>')
-
-
--- Only required if you have packer configured as `opt`
--- local pack_cmd = [[packadd packer.nvim]]
---  vim.cmd(pack_cmd)
-
+  require('keymappings')
 
 -- Install lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
