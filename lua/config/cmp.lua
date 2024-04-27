@@ -1,17 +1,17 @@
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 local utils = require'utils'
+local lspkind = require'lspkind'
 
 utils.opt('o', 'completeopt', 'menu,menuone,noselect')
 
-require'cmp'.setup {
-}
 cmp.setup({
-    snippet = {
-        -- REQUIRED - you must specify a snippet engine
-        expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        end,
+    formatting = {
+      format = lspkind.cmp_format({
+        mode = "symbol",
+        max_width = 50,
+        symbol_map = { Copilot = "" }
+      })
     },
     mapping = {
         ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
@@ -28,18 +28,17 @@ cmp.setup({
     },
 
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        -- { name = 'vsnip' }, -- For vsnip users.
-        { name = 'nvim_lua' }
-        },
-        {{ name = 'buffer' }}
-    )
+        { name = 'nvim_lsp', group_index = 1 },
+        { name = 'nvim_lua', group_index = 1 },
+        { name = 'copilot', group_index = 2 },
+        { name = 'buffer', group_index = 2  },
+    }),
 })
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
-        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+        { name = 'git' }, -- You can specify the `cmp_git` source if you were installed it.
     }, {
         { name = 'buffer' },
     })

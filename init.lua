@@ -7,9 +7,6 @@ vim.g.mapleader = ','
 -- Key mappings
    require('keymappings')
 
--- Copilot
-  require('config.copilot')
-
 -- Loads config files
 
 -- Indent
@@ -150,20 +147,6 @@ require('lazy').setup({
       require('lsp')
     end,
   },
-  'hrsh7th/cmp-vsnip',
-  {
-    'hrsh7th/vim-vsnip',
-    config = function()
-      require('config.vim-snip')
-    end,
-  },
-  'hrsh7th/vim-vsnip-integ',
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    config = function()
-      require('config.null-ls')
-    end,
-  },
   -- "jose-elias-alvarez/nvim-lsp-ts-utils";
 
   -- Icons
@@ -188,7 +171,7 @@ require('lazy').setup({
 
   -- Lua development
   'nvim-lua/plenary.nvim',
-  { 
+  {
     'folke/neodev.nvim',
     config = function()
       require('config.neodev')
@@ -197,7 +180,6 @@ require('lazy').setup({
   'rafcamlet/nvim-luapad',
   'nvim-lua/completion-nvim',
   'euclidianAce/BetterLua.vim',
-  'jbyuki/one-small-step-for-vimkind',
 
   -- Vim dispatch
   'tpope/vim-dispatch',
@@ -210,9 +192,31 @@ require('lazy').setup({
     end,
   },
 
+  -- Git source for CMP
+  {
+    "petertriho/cmp-git",
+    config = function()
+      require('config.cmp-git')
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+  },
+
   -- Copilot
   {
-    'github/copilot.vim'
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require('config.copilot')
+    end,
+  },
+  {
+      "zbirenbaum/copilot-cmp",
+      config = function()
+          require("copilot_cmp").setup()
+      end,
   },
 
   -- Status bar

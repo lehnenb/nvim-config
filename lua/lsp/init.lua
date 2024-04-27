@@ -65,14 +65,14 @@ local capabilities = require('cmp_nvim_lsp')
   .default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 
-local servers = { "solargraph", "gopls", "lua_ls", "tsserver" }
+local servers = { "solargraph", "gopls", "tsserver" }
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {capabilities = capabilities, on_attach = on_attach}
 end
 
 -- Custom Config LSPs
- local custom_configs = {
+local custom_configs = {
   require("lsp.lua_ls"),
 }
 
