@@ -61,8 +61,7 @@ local on_attach = function(lsp_client, bufnr)
     end
 end
 
-local capabilities = require('cmp_nvim_lsp')
-  .default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 
 local servers = { "solargraph", "gopls", "tsserver" }

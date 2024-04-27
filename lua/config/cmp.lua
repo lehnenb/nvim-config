@@ -27,12 +27,19 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     },
 
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp', group_index = 1 },
-        { name = 'nvim_lua', group_index = 1 },
-        { name = 'copilot', group_index = 2 },
-        { name = 'buffer', group_index = 2  },
-    }),
+    sources = cmp.config.sources(
+        {
+          { name = 'path' },
+        },
+        {
+          { name = 'nvim_lsp' },
+          { name = 'nvim_lua' },
+        },
+        {
+          { name = 'copilot' },
+          { name = 'buffer'  },
+        }
+    ),
 })
 
 -- Set configuration for specific filetype.
