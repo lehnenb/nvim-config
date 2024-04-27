@@ -3,8 +3,9 @@ local utils = require "utils"
 utils.map('n', '<C-g>', "<cmd>Telescope lsp_workspace_symbols<cr>")
 utils.map('n', '<C-b>', "<cmd>lua require('telescope.builtin.lsp_document_symbols')<cr>")
 
-
+local _builtin = require('telescope.builtin')
 local T = {}
+
 local file_ignore = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.zip", "node_modules/", "dist/"}
 
 function T.grep_neovim()
@@ -12,6 +13,7 @@ function T.grep_neovim()
         shorten_path = false,
         cwd = "~/.config/nvim",
         prompt = " - Dotfiles  - ",
+        pickers = { hidden=true },
         file_ignore_patterns = file_ignore,
         height = 10,
         layout_stratey = 'horizontal',
@@ -27,6 +29,7 @@ function T.grep_projects()
         cwd = "~/Projects",
         prompt = " - Projects - ",
         height = 10,
+        pickers = { hidden=true },
         file_ignore_patterns = file_ignore,
         layout_stratey = 'horizontal',
         layout_options = {
@@ -41,6 +44,7 @@ function T.open_neovim()
         cwd = "~/.config/nvim",
         prompt = " - Dotfiles  - ",
         height = 10,
+        pickers = { hidden=true },
         file_ignore_patterns = file_ignore,
         layout_stratey = 'horizontal',
         layout_options = {
@@ -55,6 +59,7 @@ function T.open_projects()
         cwd = "~/Projects",
         prompt = " - Projects - ",
         height = 10,
+        pickers = { hidden=true },
         file_ignore_patterns = file_ignore,
         layout_stratey = 'horizontal',
         layout_options = {
@@ -63,15 +68,32 @@ function T.open_projects()
     }
 end
 
+-- basic keymapping
+utils.map_fn('n', '<C-f>', function() _builtin.buffers() end)
+utils.map_fn('n', '<leader>fh', function() _builtin.help_tags() end)
+
+
+utils.map_fn('n', '<C-p>', function()
+  _builtin.find_files({ pickers = { hidden=true }, hidden=true, file_ignore_patterns=file_ignore })
+end)
+
+utils.map_fn('n', 'ff', function()
+  _builtin.live_grep({ pickers = { hidden=true }, file_ignore_patterns=file_ignore, shorten_path= false })
+end)
+
+utils.map_fn('n', 'fc', function()
+  _builtin.grep_string({ pickers = { hidden=true }, file_ignore_patterns=file_ignore, shorten_path= false })
+end)
+
 
 -- mapping of custom functions
-utils.map('n', '<leader>ln', "<cmd>lua require('config.telescope').open_neovim()<cr>")
-utils.map('n', '<leader>lh', "<cmd>lua require('config.telescope').open_projects()<cr>")
-utils.map('n', '<leader>gs', "<cmd>Telescope git_status<cr>")
-utils.map('n', '<leader>lo', "<cmd>Telescope oldfiles<cr>")
 
-utils.map('n', '<leader>sn', "<cmd>lua require('config.telescope').grep_neovim()<cr>")
-utils.map('n', '<leader>sh', "<cmd>lua require('config.telescope').grep_projects()<cr>")
+utils.map_fn('n', '<leader>ln', function() T.open_neovim() end)
+utils.map_fn('n', '<leader>lh', function() T.open_projects() end)
+utils.map_fn('n', '<leader>gs', function() T.git_status() end)
+utils.map_fn('n', '<leader>lo', function() T.oldfiles() end)
+utils.map_fn('n', '<leader>sn', function() T.grep_neovim() end)
+utils.map_fn('n', '<leader>sh', function() T.grep_projects() end)
 
 
 return T
