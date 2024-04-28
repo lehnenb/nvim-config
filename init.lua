@@ -26,11 +26,16 @@ require('lazy').setup({
 		lazy = true,
 		version = nil, -- dont use version="*"
 	},
+
+  -- Github URL local plugin
+  { dir = '~/Projects/neovim_github_url' },
+
+
 	  -- Tmux
-	 {
-	  'christoomey/vim-tmux-navigator',
-	  event = "BufReadPre",
-	 },
+  {
+    'christoomey/vim-tmux-navigator',
+    event = "BufReadPre",
+  },
 
   -- Rhai support
   'rhaiscript/vim-rhai',
@@ -226,7 +231,6 @@ require('lazy').setup({
       "nvim-telescope/telescope.nvim" -- optional
     },
   },
-
   {
     'sindrets/diffview.nvim'
   }
