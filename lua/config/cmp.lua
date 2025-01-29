@@ -6,6 +6,17 @@ local lspkind = require'lspkind'
 utils.opt('o', 'completeopt', 'menu,menuone,noselect')
 
 cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        --
+        -- TODO: update vim and use default snippets
+        -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+      end,
+    },
     formatting = {
       format = lspkind.cmp_format({
         mode = "symbol",
@@ -29,12 +40,10 @@ cmp.setup({
 
     sources = cmp.config.sources(
         {
-          { name = 'path' },
-        },
-        {
           { name = 'nvim_lsp' },
           { name = 'nvim_lua' },
         },
+        { name = 'luasnip'   },
         {
           { name = 'copilot' },
           { name = 'buffer'  },

@@ -1,2 +1,2 @@
 -- Setup theme
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd[[colorscheme nordic]]

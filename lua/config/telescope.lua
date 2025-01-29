@@ -7,6 +7,7 @@ local _builtin = require('telescope.builtin')
 local T = {}
 
 local file_ignore = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.zip", "node_modules/", "dist/"}
+local file__without_test_ignore = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.zip", "node_modules/", "dist/", "spec/", "tests/", "front/", "vendor/" }
 
 function T.grep_neovim()
     _builtin.live_grep {
@@ -64,6 +65,10 @@ end)
 
 utils.map_fn('n', 'ff', function()
   _builtin.live_grep({ pickers = { hidden=true }, file_ignore_patterns=file_ignore, shorten_path= false })
+end)
+
+utils.map_fn('n', 'ft', function()
+  _builtin.live_grep({ pickers = { hidden=true }, file_ignore_patterns=file__without_test_ignore, shorten_path= false })
 end)
 
 utils.map_fn('n', 'fn', function()

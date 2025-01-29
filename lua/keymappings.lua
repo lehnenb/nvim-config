@@ -14,3 +14,12 @@ utils.map('n', '<leader>do', '<cmd>lua require("dapui").open()<CR>')
 utils.map('n', '<leader>dc', '<cmd>lua require("dapui").close()<CR>')
 utils.map('n', '<leader>dbp', '<cmd>lua require("dap").set_breakpoint()<CR>')
 utils.map('n', '<leader>dsi', '<cmd>lua require("dap").step_into()<CR>')
+
+
+-- Splits
+
+utils.map('n', '<leader>r', '<cmd>SmartResizeMode<CR>')
+utils.map('n', '<C-k>', '<cmd>SmartCursorMoveUp<CR>')
+utils.map('n', '<C-j>', '<cmd>SmartCursorMoveDown<CR>')
+utils.map('n', '<C-l>', '<cmd>SmartCursorMoveRight<CR>')
+utils.map('n', '<C-h>', '<cmd>SmartCursorMoveLeft<CR>')
