@@ -1,29 +1,11 @@
 -- Map leader to space
 vim.g.mapleader = ','
 
--- Sensible defaults
+-- Sensible defaultsinit
   require('settings')
 
 -- Key mappings
-   require('keymappings')
-
--- Loads config files
-
--- Indent
-
--- Custom plugins
---  require('custom_plugins.notes')
-
--- Playground
---  vim.opt.runtimepath:append("~/Projects/playground-project/nvim-ruby-playground")
---  local utils = require('utils')
---  utils.map('n', '<leader>pl', '<cmd>lua require("nvim-ruby-playground.playground").init()<CR>')
-
-
--- Only required if you have packer configured as `opt`
--- local pack_cmd = [[packadd packer.nvim]]
---  vim.cmd(pack_cmd)
-
+  require('keymappings')
 
 -- Install lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -40,15 +22,36 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-	defaults = {
-		lazy = true,
-		version = nil, -- dont use version="*"
-	},
-	  -- Tmux
-	 {
-	  'christoomey/vim-tmux-navigator',
-	  event = "BufReadPre",
-	 },
+  defaults = {
+    lazy = true,
+    version = nil, -- dont use version="*"
+  },
+  -- Theme manager
+  {
+      "vague2k/huez.nvim",
+      -- if you want registry related features, uncomment this
+      -- import = "huez-manager.import"
+      branch = "stable",
+      event = "UIEnter",
+      config = function()
+          require("huez").setup({})
+      end,
+  },
+
+
+  -- Tmux splits integration
+  {
+    'mrjones2014/smart-splits.nvim',
+    config = function()
+      require('config.smart-splits')
+    end,
+  },
+
+  -- Github URL local plugin
+  { dir = '~/Projects/neovim_github_url' },
+
+  -- Git Conflicts
+  {'akinsho/git-conflict.nvim', version = "*", config = true},
 
   -- Rhai support
   'rhaiscript/vim-rhai',
@@ -67,15 +70,14 @@ require('lazy').setup({
 
   'williamboman/mason-lspconfig.nvim',
 
-  -- Color scheme
+  -- Color schemes
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-    config = function()
-      require('config.colorscheme')
-    end
+      'AlexvZyl/nordic.nvim',
+      lazy = false,
+      priority = 1000,
+      config = function()
+          require('nordic').load()
+      end
   },
 
   -- Code formatting
@@ -147,6 +149,16 @@ require('lazy').setup({
       require('lsp')
     end,
   },
+  {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp"
+  },
+  {
+    'saadparwaiz1/cmp_luasnip'
+  },
   -- "jose-elias-alvarez/nvim-lsp-ts-utils";
 
   -- Icons
@@ -204,20 +216,20 @@ require('lazy').setup({
   },
 
   -- Copilot
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require('config.copilot')
-    end,
-  },
-  {
-      "zbirenbaum/copilot-cmp",
-      config = function()
-          require("copilot_cmp").setup()
-      end,
-  },
+ -- {
+ --   "zbirenbaum/copilot.lua",
+--    cmd = "Copilot",
+--    event = "InsertEnter",
+--    config = function()
+--     require('config.copilot')
+--    end,
+--  },
+--  {
+--      "zbirenbaum/copilot-cmp",
+--      config = function()
+--          require("copilot_cmp").setup()
+--      end,
+--  },
 
   -- Status bar
   {
@@ -244,7 +256,6 @@ require('lazy').setup({
       "nvim-telescope/telescope.nvim" -- optional
     },
   },
-
   {
     'sindrets/diffview.nvim'
   }

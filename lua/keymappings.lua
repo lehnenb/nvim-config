@@ -3,6 +3,8 @@ utils.map('n', '<C-x>', '<cmd>noh<CR>') -- Clear highlights
 utils.map('i', 'jk', '<Esc>')           -- jk to escape
 utils.map('n', '<C-a>', '<cmd>bprev<CR>')
 utils.map('n', '<C-d>', '<cmd>bnext<CR>')
+utils.map('n', '<leader>s', '<cmd>cprev<CR>')
+utils.map('n', '<leader>f', '<cmd>cnext<CR>')
 utils.map('n', '<leader>rs', '<cmd>luafile %<cr>')
 
 -- debugger
@@ -13,3 +15,11 @@ utils.map('n', '<leader>dc', '<cmd>lua require("dapui").close()<CR>')
 utils.map('n', '<leader>dbp', '<cmd>lua require("dap").set_breakpoint()<CR>')
 utils.map('n', '<leader>dsi', '<cmd>lua require("dap").step_into()<CR>')
 
+
+-- Splits
+
+utils.map('n', '<leader>r', '<cmd>SmartResizeMode<CR>')
+utils.map('n', '<C-k>', '<cmd>SmartCursorMoveUp<CR>')
+utils.map('n', '<C-j>', '<cmd>SmartCursorMoveDown<CR>')
+utils.map('n', '<C-l>', '<cmd>SmartCursorMoveRight<CR>')
+utils.map('n', '<C-h>', '<cmd>SmartCursorMoveLeft<CR>')
