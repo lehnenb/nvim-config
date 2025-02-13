@@ -16,6 +16,9 @@ utils.map('n', '<leader>dbp', '<cmd>lua require("dap").set_breakpoint()<CR>')
 utils.map('n', '<leader>dsi', '<cmd>lua require("dap").step_into()<CR>')
 
 
+-- Set list
+vim.keymap.set('n', '<leader>c', function() vim.o.list = not vim.o.list end)
+
 -- Splits
 
 utils.map('n', '<leader>r', '<cmd>SmartResizeMode<CR>')
@@ -23,3 +26,6 @@ utils.map('n', '<C-k>', '<cmd>SmartCursorMoveUp<CR>')
 utils.map('n', '<C-j>', '<cmd>SmartCursorMoveDown<CR>')
 utils.map('n', '<C-l>', '<cmd>SmartCursorMoveRight<CR>')
 utils.map('n', '<C-h>', '<cmd>SmartCursorMoveLeft<CR>')
+
+
+

@@ -58,4 +58,4 @@ end
 -- Highlight on yank
 vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 vim.cmd 'set listchars=eol:$,space:-,tab:>#,trail:~'
-vim.cmd 'set list'
+vim.cmd 'set nolist'
