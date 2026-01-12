@@ -1,12 +1,6 @@
 -- Map leader to space
 vim.g.mapleader = ','
 
--- Sensible defaultsinit
-  require('settings')
-
--- Key mappings
-  require('keymappings')
-
 -- Install lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -68,8 +62,6 @@ require('lazy').setup({
     end
   },
 
-  'williamboman/mason-lspconfig.nvim',
-
   -- Color schemes
   {
       'AlexvZyl/nordic.nvim',
@@ -120,7 +112,7 @@ require('lazy').setup({
   {
     'kyazdani42/nvim-web-devicons',
     config = function()
-      require('config.nvim-web-devicons')
+
     end,
   },
   {
@@ -130,8 +122,16 @@ require('lazy').setup({
     end
   },
   -- LSP and completion
-  'ray-x/lsp_signature.nvim',
-  'golang/vscode-go',
+  {
+    'ray-x/lsp_signature.nvim',
+    event = 'InsertEnter',
+    opts = {
+      bind = true,
+      handler_opts = {
+        border = 'rounded'
+      }
+    }
+  },
   {
     'hrsh7th/nvim-cmp',
     config = function()
@@ -143,12 +143,6 @@ require('lazy').setup({
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-nvim-lua',
   'hrsh7th/cmp-cmdline',
-  {
-    'neovim/nvim-lspconfig',
-    config = function()
-      require('lsp')
-    end,
-  },
   {
     "L3MON4D3/LuaSnip",
     -- follow latest release.
@@ -184,10 +178,15 @@ require('lazy').setup({
   -- Lua development
   'nvim-lua/plenary.nvim',
   {
-    'folke/neodev.nvim',
-    config = function()
-      require('config.neodev')
-    end,
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
   },
   'rafcamlet/nvim-luapad',
   'nvim-lua/completion-nvim',
@@ -260,3 +259,11 @@ require('lazy').setup({
     'sindrets/diffview.nvim'
   }
 })
+
+-- Sensible defaults
+  require('settings')
+
+-- Key mappings
+  require('keymappings')
+
+
