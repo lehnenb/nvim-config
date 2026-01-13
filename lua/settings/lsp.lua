@@ -68,3 +68,11 @@ end
 if vim.fn.executable('gopls') == 1 then
   vim.lsp.enable('gopls')
 end
+
+if vim.fn.executable('ruby-lsp') == 1 then
+  vim.lsp.enable('ruby-lsp')
+end
+
+if vim.fn.executable('rubocop') == 1 then
+  vim.lsp.enable('rubocop')
+end
