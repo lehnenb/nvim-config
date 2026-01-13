@@ -27,6 +27,6 @@ for lang, level in pairs(indentation)  do
 end
 
 -- Highlight on yank
-vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
+vim.cmd 'au TextYankPost * lua vim.hl.on_yank {on_visual = false}'
 vim.cmd 'set listchars=eol:$,space:-,tab:>#,trail:~'
 vim.cmd 'set nolist'
