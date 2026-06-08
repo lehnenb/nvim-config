@@ -46,10 +46,11 @@ end
 vim.fn.sign_define('DapBreakpoint',{ text ='🟥', texthl ='', linehl ='', numhl =''})
 vim.fn.sign_define('DapStopped',{ text ='▶️', texthl ='', linehl ='', numhl =''})
 
-vim.keymap.set('n', '<leader>dc', dap.continue)
-vim.keymap.set('n', '<leader>dr', dap.step_over)
-vim.keymap.set('n', '<leader>di', dap.step_into)
-vim.keymap.set('n', '<leader>do',  dap.step_out)
-vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)
-vim.keymap.set('n', '<leader>de', dap.repl.open)
+local utils = require('utils')
+utils.map_fn('n', '<leader>dc', dap.continue, { desc = 'DAP: continue' })
+utils.map_fn('n', '<leader>dr', dap.step_over, { desc = 'DAP: step over' })
+utils.map_fn('n', '<leader>di', dap.step_into, { desc = 'DAP: step into' })
+utils.map_fn('n', '<leader>do', dap.step_out, { desc = 'DAP: step out' })
+utils.map_fn('n', '<leader>db', dap.toggle_breakpoint, { desc = 'DAP: toggle breakpoint' })
+utils.map_fn('n', '<leader>de', dap.repl.open, { desc = 'DAP: open REPL' })
 

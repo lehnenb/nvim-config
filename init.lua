@@ -1,5 +1,6 @@
 -- Map leader to space
 vim.g.mapleader = ','
+vim.env.PATH = vim.env.PATH .. ":/opt/homebrew/bin"
 
 -- Install lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -36,6 +37,13 @@ require('lazy').setup({
   },
 
 
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('config.gitsigns')
+    end,
+  },
+
   -- Tmux splits integration
   {
     'mrjones2014/smart-splits.nvim',
@@ -69,6 +77,25 @@ require('lazy').setup({
   -- Indentation
   {
     "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}
+  },
+
+  -- Typescript tools
+  {
+  "ray-x/lsp_signature.nvim",
+  event = "InsertEnter",
+  opts = {
+    bind = true,
+    handler_opts = {
+      border = "rounded"
+    }
+  },
+  -- or use config
+  -- config = function(_, opts) require'lsp_signature'.setup({you options}) end
+  },
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
   },
 
   -- Pictograms
@@ -114,16 +141,6 @@ require('lazy').setup({
   },
   -- LSP and completion
   {
-    'ray-x/lsp_signature.nvim',
-    event = 'InsertEnter',
-    opts = {
-      bind = true,
-      handler_opts = {
-        border = 'rounded'
-      }
-    }
-  },
-  {
     'hrsh7th/nvim-cmp',
     config = function()
       require('config.cmp')
@@ -158,12 +175,10 @@ require('lazy').setup({
   },
   {
     'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdated',
     config = function()
-      require('config.treesitter')
+      require('config.treesitter').setup()
     end,
-    build = function()
-      vim.cmd(':TSUpdate');
-    end
   },
 
   -- Lua development
@@ -180,7 +195,6 @@ require('lazy').setup({
     },
   },
   'rafcamlet/nvim-luapad',
-  'nvim-lua/completion-nvim',
   'euclidianAce/BetterLua.vim',
 
   -- Vim dispatch

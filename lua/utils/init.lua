@@ -2,6 +2,7 @@
 local utils = { }
 
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
+local _custom_keymaps = {}
 
 function utils.opt(scope, key, value)
     scopes[scope][key] = value
@@ -12,12 +13,22 @@ function utils.map(mode, lhs, rhs, opts)
   local options = {noremap = true}
   if opts then options = vim.tbl_extend('force', options, opts) end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+  if opts and opts.desc then
+    table.insert(_custom_keymaps, { mode = mode, lhs = lhs, desc = opts.desc })
+  end
 end
 
 function utils.map_fn(mode, lhs, callback, opts)
-  local options = {noremap = true, callback = callback}
+  local options = {noremap = true}
   if opts then options = vim.tbl_extend('force', options, opts) end
-  vim.api.nvim_set_keymap(mode, lhs, '', options)
+  vim.keymap.set(mode, lhs, callback, options)
+  if opts and opts.desc then
+    table.insert(_custom_keymaps, { mode = mode, lhs = lhs, desc = opts.desc })
+  end
+end
+
+function utils.get_custom_keymaps()
+  return _custom_keymaps
 end
 
 

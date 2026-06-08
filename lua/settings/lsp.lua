@@ -1,33 +1,33 @@
 local function set_lsp_keymaps(lsp_client, bufnr)
-    local function buf_set_keymap(mode, key, cmd)
-        local opts = {noremap = true, silent = true}
-        vim.api.nvim_buf_set_keymap(bufnr, mode, key, cmd, opts)
+    local function buf_set_keymap(mode, key, cmd, desc)
+        vim.api.nvim_buf_set_keymap(bufnr, mode, key, cmd, { noremap = true, silent = true, desc = desc })
     end
 
-    -- Mappings.
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
-    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
-    buf_set_keymap('n', 'gi', '<cmd>ua vim.lsp.buf.implementation()<CR>')
-    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-    buf_set_keymap('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-    buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-    buf_set_keymap('n', '<leader>lrf', '<cmd>lua vim.lsp.buf.references()<CR>')
-    buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-    buf_set_keymap('n', '<leader>ll','<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
-    buf_set_keymap('n', '<leader>lca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+    buf_set_keymap('n', '<leader>gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', 'LSP: go to declaration')
+    buf_set_keymap('n', '<leader>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', 'LSP: go to definition')
+    buf_set_keymap('n', '<leader>gv', '<Cmd>vsplit<CR><Cmd>lua vim.lsp.buf.definition()<CR>', 'LSP: go to definition in vsplit')
+    buf_set_keymap('n', '<leader>gh', '<Cmd>vsplit<CR><Cmd>lua vim.lsp.buf.definition()<CR>', 'LSP: go to definition in split')
+
+    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', 'LSP: hover docs')
+    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', 'LSP: go to implementation')
+    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', 'LSP: signature help')
+    buf_set_keymap('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'LSP: type definition')
+    buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', 'LSP: rename symbol')
+    buf_set_keymap('n', '<leader>lrf', '<cmd>lua vim.lsp.buf.references()<CR>', 'LSP: references')
+    buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', 'LSP: line diagnostics')
+    buf_set_keymap('n', '<leader>ll', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', 'LSP: diagnostics to loclist')
+    buf_set_keymap('n', '<leader>lca', '<cmd>lua vim.lsp.buf.code_action()<CR>', 'LSP: code action')
 
     vim.keymap.set('n', '[d', function()
       vim.diagnostic.jump({ count = -1, float = { border = 'rounded' } })
-    end, { buffer = true, silent = true })
+    end, { buffer = true, silent = true, desc = 'LSP: previous diagnostic' })
 
     vim.keymap.set('n', 'd]', function()
       vim.diagnostic.jump({ count = 1, float = { border = 'rounded' } })
-    end, { buffer = true, silent = true })
+    end, { buffer = true, silent = true, desc = 'LSP: next diagnostic' })
 
-    -- Set some keybinds conditional on server capabilities
     if lsp_client.server_capabilities.document_formatting then
-        buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>")
+        buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", 'LSP: format buffer')
     end
 end
 
@@ -60,6 +60,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 })
 
+if vim.fn.executable('tsp-server') == 1 then
+  vim.lsp.enable('tsp-server')
+end
 
 if vim.fn.executable('lua-language-server') == 1 then
   vim.lsp.enable('luals')
